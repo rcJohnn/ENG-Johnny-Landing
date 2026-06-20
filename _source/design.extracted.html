@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Johnny Rodríguez — Systems Engineer · AI &amp; Cloud</title>
+
+  <script>
+    // The offline bundler may evaluate the app script twice (once pre-transpiled,
+    // once via in-browser Babel). The real mount is guarded + error-boundary wrapped
+    // and renders correctly; a duplicate evaluation can throw a harmless React
+    // "Element type is invalid" before the design-system bundle blob finishes loading.
+    // Suppress only that specific transient error so it never surfaces an overlay.
+    window.addEventListener("error", function (ev) {
+      var m = (ev && ev.message) || (ev && ev.error && ev.error.message) || "";
+      if (/Element type is invalid/.test(m)) {
+        ev.preventDefault();
+        if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+      }
+    }, true);
+  </script>
+
+  
+  
+  
+
+  <style>/* ============================================================
+   styles.css — global entry point.
+   Consumers link THIS file. Keep it as @import lines only.
+   ============================================================ */
+/* Webfonts — Google Fonts. Display: Space Grotesk · Body/UI: Inter · Mono: JetBrains Mono */
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ebc1ac2f-114f-453e-bab3-6dba03bcc3b6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("320cf454-3bbd-4157-8a1e-72397b7e644d") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("bcd4c964-404e-41a5-90aa-3a927495e11c") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("daa0b666-c4d8-4204-a0ad-4748e833d342") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("e053d1a1-5c95-4f12-a205-a3a8315cc984") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("37049f10-510d-4595-afd7-83f5b9fec0d1") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f4572b76-a5ad-4fac-bf2a-853fc2b179a7") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("ebc1ac2f-114f-453e-bab3-6dba03bcc3b6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("320cf454-3bbd-4157-8a1e-72397b7e644d") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("bcd4c964-404e-41a5-90aa-3a927495e11c") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("daa0b666-c4d8-4204-a0ad-4748e833d342") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e053d1a1-5c95-4f12-a205-a3a8315cc984") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("37049f10-510d-4595-afd7-83f5b9fec0d1") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f4572b76-a5ad-4fac-bf2a-853fc2b179a7") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("ebc1ac2f-114f-453e-bab3-6dba03bcc3b6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("320cf454-3bbd-4157-8a1e-72397b7e644d") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("bcd4c964-404e-41a5-90aa-3a927495e11c") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("daa0b666-c4d8-4204-a0ad-4748e833d342") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("e053d1a1-5c95-4f12-a205-a3a8315cc984") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("37049f10-510d-4595-afd7-83f5b9fec0d1") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("f4572b76-a5ad-4fac-bf2a-853fc2b179a7") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("2dc6b894-8cb9-4cd9-b1c3-6343f1584e1d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("919d891c-7594-4a60-9402-7f9a2048dc62") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("bbf1f699-233b-436e-8e61-86e1c49626c0") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8c2bc942-e216-416c-8e4e-d5ed2faa2bca") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("31b02fcb-9c6a-4a9c-912d-74e7320ede6f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("751ca911-8fab-4c17-a544-68460bf07e91") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("2dc6b894-8cb9-4cd9-b1c3-6343f1584e1d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("919d891c-7594-4a60-9402-7f9a2048dc62") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("bbf1f699-233b-436e-8e61-86e1c49626c0") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8c2bc942-e216-416c-8e4e-d5ed2faa2bca") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("31b02fcb-9c6a-4a9c-912d-74e7320ede6f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("751ca911-8fab-4c17-a544-68460bf07e91") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("6b517031-99c2-469b-a258-fb498567a940") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("49f93b57-fc62-4efa-9e60-0c20dad00588") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("024b3eda-b269-4bf3-a451-db65934b2a86") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("6b517031-99c2-469b-a258-fb498567a940") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("49f93b57-fc62-4efa-9e60-0c20dad00588") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("024b3eda-b269-4bf3-a451-db65934b2a86") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("6b517031-99c2-469b-a258-fb498567a940") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("49f93b57-fc62-4efa-9e60-0c20dad00588") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("024b3eda-b269-4bf3-a451-db65934b2a86") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("6b517031-99c2-469b-a258-fb498567a940") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("49f93b57-fc62-4efa-9e60-0c20dad00588") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("024b3eda-b269-4bf3-a451-db65934b2a86") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+/* ============================================================
+   COLORS — editorial-industrial monochrome + one azure signal
+   Monochrome 95% of the time. Azure ONLY for active states,
+   cursor, link hover, "● disponible" dot, section-index
+   underline, and 1–2 metrics. Never as fill.
+   ============================================================ */
+:root {
+  /* --- Ink / paper base ramp --- */
+  --ink: #0B0B0D;          /* primary text on light, deepest neutral */
+  --void: #060607;         /* near-black canvas (hero, dark sections) */
+  --paper: #F3F2EE;        /* warm off-white surface */
+  --graphite: #56565C;     /* secondary text */
+  --mist: #9A9AA0;         /* tertiary text / disabled */
+
+  /* --- Hairlines (1px technical-drawing rules) --- */
+  --line-light: #DEDCD5;   /* divider on paper */
+  --line-dark: #1C1C20;    /* divider on void/ink */
+
+  /* --- The signal (azure) — used sparingly --- */
+  --signal: #2F6BFF;       /* the electric blue accent */
+  --signal-dim: #1E47B8;   /* pressed / darker signal */
+  --signal-soft: rgba(47, 107, 255, 0.08); /* faint wash, focus rings, hovers */
+
+  /* --- Semantic aliases (light / paper context) --- */
+  --bg-page: var(--paper);
+  --bg-inverse: var(--void);
+  --text-primary: var(--ink);
+  --text-secondary: var(--graphite);
+  --text-tertiary: var(--mist);
+  --border-hairline: var(--line-light);
+  --accent: var(--signal);
+  --accent-pressed: var(--signal-dim);
+  --accent-wash: var(--signal-soft);
+  --focus-ring: var(--signal);
+
+  /* --- Semantic aliases (dark / void context) --- */
+  --text-on-dark: var(--paper);
+  --text-on-dark-secondary: var(--mist);
+  --border-on-dark: var(--line-dark);
+
+  /* --- Overlay gradient for text contrast over hero video --- */
+  --hero-veil: linear-gradient(180deg, rgba(6,6,7,0.55) 0%, rgba(6,6,7,0.25) 38%, rgba(6,6,7,0.72) 100%); /* @kind other */
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   Display = Space Grotesk · Body/UI = Inter · Mono = JetBrains Mono
+   Display 3.5–6rem (lh 0.95–1) · micro-labels mono 10–11px
+   uppercase tracking 0.2em · body 14–15px.
+   ============================================================ */
+:root {
+  /* --- Families --- */
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* --- Display scale (clamped, mobile-first): hero / manifesto / sections / cards --- */
+  --fs-display-xl: clamp(3rem, 9vw, 6rem); /* @kind font */
+  --fs-display-lg: clamp(2.5rem, 6.5vw, 4.5rem); /* @kind font */
+  --fs-display-md: clamp(2rem, 4.5vw, 3.5rem); /* @kind font */
+  --fs-display-sm: clamp(1.5rem, 3vw, 2.25rem); /* @kind font */
+
+  /* --- Body scale: 17px lead · 15px default · 14px dense --- */
+  --fs-body-lg: 1.0625rem; /* @kind font */
+  --fs-body: 0.9375rem; /* @kind font */
+  --fs-body-sm: 0.875rem; /* @kind font */
+
+  /* --- Mono / micro-labels: 11px label · 10px · 13px inline --- */
+  --fs-mono-label: 0.6875rem; /* @kind font */
+  --fs-mono-xs: 0.625rem; /* @kind font */
+  --fs-mono: 0.8125rem; /* @kind font */
+
+  /* --- Weights --- */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium: 500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold: 700; /* @kind font */
+
+  /* --- Line heights --- */
+  --lh-display: 0.97; /* @kind font */
+  --lh-tight: 1.1; /* @kind font */
+  --lh-body: 1.6; /* @kind font */
+
+  /* --- Tracking: micro-labels · wide · tighten display --- */
+  --tracking-label: 0.2em; /* @kind font */
+  --tracking-wide: 0.08em; /* @kind font */
+  --tracking-display: -0.02em; /* @kind font */
+}
+
+/* ============================================================
+   SPACING — base 8px grid. Lots of air.
+   ============================================================ */
+:root {
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8  — base unit */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-8: 3rem;     /* 48 */
+  --space-10: 4rem;    /* 64 */
+  --space-12: 6rem;    /* 96 */
+  --space-16: 8rem;    /* 128 */
+  --space-20: 10rem;   /* 160 — section rhythm desktop */
+
+  /* --- Layout --- */
+  --gutter: clamp(1.25rem, 5vw, 5rem); /* @kind spacing */
+  --section-y: clamp(5rem, 12vw, 11rem); /* @kind spacing */
+  --maxw: 1320px;                        /* content container */
+  --maxw-prose: 62ch;                    /* reading measure */
+
+  /* --- Hairline width --- */
+  --hairline: 1px;
+
+  /* --- Radii — kept minimal / technical. Mostly square. --- */
+  --radius-0: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-pill: 999px;
+}
+
+/* ============================================================
+   MOTION — premium, meditative, never abrupt.
+   Global easing: cubic-bezier(0.16, 1, 0.3, 1). No cartoon bounce.
+   Respect prefers-reduced-motion (consumers should degrade to fades).
+   ============================================================ */
+:root {
+  /* --- Easing --- */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+
+  /* --- Durations --- */
+  --dur-fast: 0.18s; /* @kind other */
+  --dur-base: 0.4s; /* @kind other */
+  --dur-reveal: 0.9s; /* @kind other */
+  --dur-slow: 1.2s; /* @kind other */
+
+  /* --- Reveal motion tokens --- */
+  --reveal-y: 40px; /* @kind spacing */
+  --reveal-y-hero: 120px; /* @kind spacing */
+  --stagger: 0.06s; /* @kind other */
+
+  /* --- Marquee --- */
+  --marquee-dur: 38s; /* @kind other */
+}
+
+/* ============================================================
+   base.css — minimal resets + a few brand primitives that the
+   monochrome editorial-industrial system leans on everywhere.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+  margin: 0;
+}
+
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; text-decoration: none; }
+
+/* --- Micro-label: the mono uppercase tracked tag used as eyebrows,
+       section indices, metric captions, scroll cues. --- */
+.ds-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-label);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--text-secondary);
+}
+
+/* --- 1px technical hairline divider --- */
+.ds-hairline {
+  border: 0;
+  border-top: var(--hairline) solid var(--border-hairline);
+  margin: 0;
+}
+
+/* --- Section index, e.g. [01] with azure underline --- */
+.ds-index {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* --- Available dot (pulsing azure) --- */
+.ds-dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  box-shadow: 0 0 0 0 var(--accent);
+  animation: ds-pulse 2.4s var(--ease-premium) infinite;
+}
+@keyframes ds-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(47,107,255,0.5); }
+  70%  { box-shadow: 0 0 0 7px rgba(47,107,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(47,107,255,0); }
+}
+
+/* --- Visible keyboard focus: azure ring --- */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+::selection { background: var(--accent); color: var(--paper); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-dot { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+</style>
+  <style>/* ============================================================
+   portfolio.css — UI-kit-specific styles for the one-page
+   portfolio. Foundations come from ../../styles.css (tokens).
+   ============================================================ */
+
+html { scroll-behavior: smooth; }
+body { background: var(--void); color: var(--paper); overflow-x: hidden; }
+
+.pf-wrap { position: relative; }
+
+/* --- Custom cursor (desktop only) --- */
+.pf-cursor, .pf-cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 200; border-radius: 999px; mix-blend-mode: difference; }
+.pf-cursor { width: 6px; height: 6px; background: var(--signal); transform: translate(-50%, -50%); transition: width .3s var(--ease-premium), height .3s var(--ease-premium); }
+.pf-cursor-ring { width: 30px; height: 30px; border: 1px solid rgba(47,107,255,0.6); transform: translate(-50%, -50%); transition: width .35s var(--ease-premium), height .35s var(--ease-premium), opacity .35s; }
+.pf-cursor.is-link { width: 12px; height: 12px; }
+.pf-cursor-ring.is-link { width: 52px; height: 52px; opacity: .9; }
+@media (pointer: coarse) { .pf-cursor, .pf-cursor-ring { display: none !important; } }
+
+/* --- Section shell --- */
+.pf-section { position: relative; padding: var(--section-y) 0; }
+.pf-container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+.pf-rule { border: 0; border-top: 1px solid var(--line-dark); }
+
+/* --- Scroll reveal --- */
+.reveal { opacity: 0; transform: translateY(var(--reveal-y)); transition: opacity var(--dur-reveal) var(--ease-premium), transform var(--dur-reveal) var(--ease-premium); will-change: opacity, transform; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* --- HERO --- */
+.pf-hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+.pf-hero__bg { position: absolute; inset: -8% 0 -8% 0; z-index: 0; }
+.pf-hero__frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 2.6s var(--ease-premium); }
+.pf-hero__veil { position: absolute; inset: 0; z-index: 1; background: var(--hero-veil); }
+.pf-hero__grid { position: absolute; inset: 0; z-index: 1; opacity: .5;
+  background-image: linear-gradient(var(--line-dark) 1px, transparent 1px), linear-gradient(90deg, var(--line-dark) 1px, transparent 1px);
+  background-size: 80px 80px; mask-image: radial-gradient(ellipse at 70% 60%, #000 10%, transparent 70%); }
+.pf-hero__content { position: relative; z-index: 2; width: 100%; padding-bottom: clamp(3rem, 7vh, 6rem); }
+
+/* Block-reveal headline */
+.pf-headline { font-family: var(--font-display); font-weight: 500; font-size: var(--fs-display-xl); line-height: var(--lh-display); letter-spacing: var(--tracking-display); margin: 0; }
+.pf-headline .ln { display: block; }
+.pf-headline .wdmask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+.pf-headline .wd { display: inline-block; transform: translateY(115%); transition: transform 1.05s var(--ease-premium); }
+.pf-headline .wd.dim { color: var(--graphite); }
+.pf-hero.ready .pf-headline .wd { transform: translateY(0); }
+
+.pf-scrollcue { position: absolute; left: var(--gutter); bottom: 22px; z-index: 2; display: flex; align-items: center; gap: 10px; }
+.pf-scrollcue .bar { width: 1px; height: 34px; background: linear-gradient(var(--mist), transparent); animation: cue 2.4s var(--ease-premium) infinite; transform-origin: top; }
+@keyframes cue { 0%,100%{ transform: scaleY(.3); opacity:.4 } 50%{ transform: scaleY(1); opacity:1 } }
+
+/* --- Display headings shared --- */
+.pf-display-lg { font-family: var(--font-display); font-weight: 500; font-size: var(--fs-display-lg); line-height: var(--lh-display); letter-spacing: var(--tracking-display); }
+.pf-display-md { font-family: var(--font-display); font-weight: 500; font-size: var(--fs-display-md); line-height: 1.02; letter-spacing: var(--tracking-display); }
+
+/* --- Manifesto --- */
+.pf-manifesto p { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 4vw, 3rem); line-height: 1.18; letter-spacing: -0.01em; max-width: 20ch; }
+.pf-manifesto .em { color: var(--paper); }
+.pf-manifesto .dim { color: var(--graphite); }
+
+/* --- Sobre / portrait --- */
+.pf-portrait { position: relative; filter: grayscale(1) contrast(1.04) brightness(.96); }
+.pf-portrait::after { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: overlay; opacity: .5;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMjAnIGhlaWdodD0nMTIwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC45JyBudW1PY3RhdmVzPScyJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsdGVyPSd1cmwoI24pJyBvcGFjaXR5PScwLjUnLz48L3N2Zz4="); }
+.pf-portrait img { display: block; width: 100%; height: auto; }
+.pf-portrait .tint { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(47,107,255,0.08)); }
+
+.pf-data { font-family: var(--font-mono); }
+.pf-data .num { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; letter-spacing: -.02em; }
+.pf-data .num.sig { color: var(--signal); }
+
+/* --- Capacidades grid --- */
+.pf-cap-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.pf-cap-cell { padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 3rem); border-top: 1px solid var(--line-dark); border-left: 1px solid var(--line-dark); position: relative; transition: background .5s var(--ease-premium); }
+.pf-cap-cell:hover { background: var(--signal-soft); }
+.pf-cap-grid > .pf-cap-cell:nth-child(2n) { border-right: 1px solid var(--line-dark); }
+.pf-cap-grid > .pf-cap-cell:nth-last-child(-n+2):not(:nth-child(2n+1)) { } /* spacing only */
+
+/* --- Proyectos cards --- */
+.pf-proj { display: grid; gap: clamp(2rem, 4vw, 3.5rem); }
+.pf-proj-card { position: relative; display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--line-dark); padding-top: clamp(1.5rem, 3vw, 2.5rem); cursor: pointer; }
+.pf-proj-media { position: relative; aspect-ratio: 16/9; overflow: hidden; margin-top: clamp(1.5rem, 3vw, 2.5rem); background: #0d0d10; border: 1px solid var(--line-dark); }
+.pf-proj-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) brightness(.7); opacity: 0; transform: scale(1.06); transition: opacity 1s var(--ease-premium), transform 1.6s var(--ease-premium), filter 1s var(--ease-premium); }
+.pf-proj-card:hover .pf-proj-media img { opacity: .85; transform: scale(1); filter: grayscale(.6) brightness(.78); }
+.pf-proj-media .ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--graphite);
+  background-image: linear-gradient(var(--line-dark) 1px, transparent 1px), linear-gradient(90deg, var(--line-dark) 1px, transparent 1px); background-size: 40px 40px; }
+.pf-proj-arrow { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--line-dark); border-radius: 999px; opacity: 0; transform: translate(-6px, 6px) rotate(-8deg); transition: opacity .5s var(--ease-premium), transform .5s var(--ease-premium), border-color .4s, background .4s; }
+.pf-proj-card:hover .pf-proj-arrow { opacity: 1; transform: none; border-color: var(--signal); background: var(--signal); }
+.pf-proj-card:hover .pf-proj-title { color: var(--paper); }
+.pf-proj-title { transition: color .4s var(--ease-premium); }
+
+/* --- Arsenal marquee --- */
+.pf-marquee { display: flex; overflow: hidden; gap: 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.pf-marquee:hover .pf-track { animation-play-state: paused; }
+.pf-track { display: flex; flex: none; align-items: center; gap: clamp(2.5rem, 6vw, 5rem); padding-right: clamp(2.5rem, 6vw, 5rem); animation: marquee var(--marquee-dur) linear infinite; }
+@keyframes marquee { to { transform: translateX(-100%); } }
+.pf-marquee .item { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.5rem, 3.4vw, 2.6rem); color: var(--graphite); white-space: nowrap; transition: color .4s; }
+.pf-marquee .item:hover { color: var(--paper); }
+.pf-marquee .dot { color: var(--signal); font-size: 1rem; }
+
+/* --- Trayectoria timeline --- */
+.pf-timeline { position: relative; }
+.pf-timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 1px; background: var(--line-dark); }
+.pf-tl-item { position: relative; padding-left: 40px; padding-bottom: clamp(2rem, 4vw, 3rem); }
+.pf-tl-item::before { content: ""; position: absolute; left: 3px; top: 6px; width: 9px; height: 9px; border-radius: 999px; background: var(--void); border: 1px solid var(--mist); }
+.pf-tl-item.active::before { background: var(--signal); border-color: var(--signal); box-shadow: 0 0 0 5px var(--signal-soft); }
+
+/* --- Referencias --- */
+.pf-quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-dark); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
+.pf-quote { background: var(--void); padding: clamp(1.5rem, 3vw, 2.5rem); }
+.pf-quote p { font-size: 0.9375rem; line-height: 1.6; color: var(--mist); }
+
+/* --- Contacto --- */
+.pf-email { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.8rem, 7vw, 5.5rem); line-height: 1; letter-spacing: -.03em; color: var(--paper); display: inline-block; transition: color .4s var(--ease-premium); word-break: break-word; }
+.pf-email:hover { color: var(--signal); }
+
+/* --- Footer --- */
+.pf-footer { border-top: 1px solid var(--line-dark); padding: var(--space-8) 0; }
+.pf-totop { display: inline-flex; align-items: center; gap: 8px; transition: color .35s; }
+.pf-totop:hover { color: var(--signal); }
+
+/* --- Responsive --- */
+@media (max-width: 860px) {
+  .pf-cap-grid { grid-template-columns: 1fr; }
+  .pf-cap-grid > .pf-cap-cell { border-right: 1px solid var(--line-dark); }
+  .pf-quotes { grid-template-columns: 1fr; }
+}
+
+/* --- Reduced motion: degrade to fades --- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { transform: none; }
+  .pf-headline .wd { transform: none !important; }
+  .pf-track { animation: none; flex-wrap: wrap; }
+  .pf-scrollcue .bar { animation: none; }
+  .pf-hero__frame { transition: none; }
+}
+</style>
+
+  
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="9d557d54-da0d-4165-8003-729480488e36" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="406cf37d-a088-455d-b5e4-510dc33efd90" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="011cfb53-6e46-4658-868d-03bf98abffc2"></script>
+  <script src="d687d9ef-9e79-46c7-ad06-62e7e845fb3e"></script>
+  <script src="6d19ea23-6e8b-48f8-9cbd-61f2b174b47f" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <!-- Single combined app script. -->
+  <script type="text/babel" data-presets="react">
+    if (!window.__pfScriptRan) {
+      window.__pfScriptRan = true;
+    const NSget = () => window.JohnnyRodrGuezPortfolioDesignSystem_c8b5ed || {};
+    const res = (k, fb) => (window.__resources && window.__resources[k]) || fb;
+    const heroAfb = "../../assets/hero/hero_01.webp";
+    const heroBfb = "../../assets/hero/hero_02.webp";
+    const portraitFb = "../../assets/portrait/johnny.webp";
+
+    function Headline() {
+      const lines = [
+        { words: ["Arquitecturas", "que", "escalan."], dim: false },
+        { words: ["Agentes", "que", "ejecutan."], dim: true },
+      ];
+      let i = 0;
+      return (
+        <h1 className="pf-headline">
+          {lines.map((ln, li) => (
+            <span className="ln" key={li}>
+              {ln.words.map((w, wi) => {
+                const delay = 0.5 + i * 0.08; i++;
+                return (
+                  <React.Fragment key={wi}>
+                    <span className="wdmask"><span className={"wd" + (ln.dim ? " dim" : "")} style={{ transitionDelay: delay + "s" }}>{w}</span></span>
+                    {wi < ln.words.length - 1 ? " " : null}
+                  </React.Fragment>
+                );
+              })}
+            </span>
+          ))}
+        </h1>
+      );
+    }
+
+    function Hero() {
+      const { Button } = NSget();
+      return (
+        <section className="pf-hero" id="top">
+          <div className="pf-hero__bg" data-parallax="0.12">
+            <img className="pf-hero__frame" data-frame="a" src={res('heroA', heroAfb)} alt="" />
+            <img className="pf-hero__frame" data-frame="b" src={res('heroB', heroBfb)} alt="" style={{ opacity: 0 }} />
+          </div>
+          <div className="pf-hero__grid" data-parallax="0.05" aria-hidden="true"></div>
+          <div className="pf-hero__veil" aria-hidden="true"></div>
+          <div className="pf-hero__content">
+            <div className="pf-container">
+              <div className="ds-label" style={{ marginBottom: "var(--space-6)", color: "var(--mist)" }}>
+                [ San José · Costa Rica — Systems Engineer / AI · Cloud ]
+              </div>
+              <Headline />
+              <p style={{ maxWidth: "46ch", marginTop: "var(--space-6)", color: "var(--paper)", fontSize: "var(--fs-body-lg)", opacity: 0.92 }}>
+                Ingeniero de sistemas. Diseño arquitecturas en la nube y agentes de IA que
+                sostienen producto real — de la red al modelo.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-3)", marginTop: "var(--space-8)" }}>
+                <Button variant="signal" size="lg" icon="arrow" href="#proyectos">Ver proyectos</Button>
+                <Button variant="secondary" size="lg" icon="download" href="#" magnetic={false}>Descargar CV</Button>
+              </div>
+            </div>
+          </div>
+          <div className="pf-scrollcue ds-label">
+            <span className="bar" aria-hidden="true"></span>
+            <span>Scroll</span>
+          </div>
+        </section>
+      );
+    }
+
+    function Manifiesto() {
+      const { SectionLabel } = NSget();
+      return (
+        <section className="pf-section pf-manifesto" id="manifiesto">
+          <div className="pf-container">
+            <div className="reveal" style={{ marginBottom: "var(--space-8)" }}>
+              <SectionLabel index="01" onDark>Manifiesto</SectionLabel>
+            </div>
+            <p className="reveal" data-delay="0.05">
+              <span className="dim">El sistema no es el código.</span>{" "}
+              <span className="em">Es la decisión de que escale, sobreviva y no despierte a nadie a las 3 a.m.</span>
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function Sobre() {
+      const { SectionLabel } = NSget();
+      const data = [
+        { n: 4, label: "Dominios", sig: false },
+        { n: 3, label: "Certificaciones", sig: true },
+        { n: 2, label: "Capas — red & modelo", sig: false },
+        { n: null, label: "Costa Rica", sig: false, text: "CR" },
+      ];
+      return (
+        <section className="pf-section" id="sobre">
+          <hr className="pf-rule" />
+          <div className="pf-container" style={{ paddingTop: "var(--space-10)" }}>
+            <div className="reveal" style={{ marginBottom: "var(--space-10)" }}>
+              <SectionLabel index="02" onDark>Sobre</SectionLabel>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 0.9fr) minmax(0, 1.1fr)", gap: "clamp(2rem, 6vw, 6rem)", alignItems: "start" }} className="pf-sobre-grid">
+              <div className="pf-portrait reveal" data-cursor>
+                <img src={res('portrait', portraitFb)} alt="Johnny Rodríguez" loading="lazy" />
+                <span className="tint" aria-hidden="true"></span>
+              </div>
+              <div>
+                <h2 className="pf-display-lg reveal" data-delay="0.05" style={{ marginBottom: "var(--space-6)" }}>
+                  Johnny<br />Rodríguez
+                </h2>
+                <p className="reveal" data-delay="0.1" style={{ maxWidth: "var(--maxw-prose)", color: "var(--mist)", fontSize: "var(--fs-body-lg)", marginBottom: "var(--space-5)" }}>
+                  Ingeniero de sistemas enfocado en IA aplicada, Azure Cloud y desarrollo
+                  fullstack. Construyo desde la infraestructura — redes, seguridad, despliegue —
+                  hasta los agentes y modelos que corren encima.
+                </p>
+                <p className="reveal" data-delay="0.15" style={{ maxWidth: "var(--maxw-prose)", color: "var(--graphite)", marginBottom: "var(--space-10)" }}>
+                  Trabajo con criterio de producto: que lo que se entrega resista carga, falle
+                  con gracia y se pueda mantener sin heroísmos.
+                </p>
+                <hr className="pf-rule" style={{ marginBottom: "var(--space-8)" }} />
+                <div className="pf-data reveal" data-delay="0.2" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "var(--space-5)" }}>
+                  {data.map((d, i) => (
+                    <div key={i}>
+                      <div className={"num" + (d.sig ? " sig" : "")}>
+                        {d.text ? d.text : <span data-count={d.n} data-pad="1">00</span>}
+                      </div>
+                      <div className="ds-label" style={{ marginTop: "var(--space-2)" }}>{d.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <style>{`@media (max-width: 760px){ .pf-sobre-grid{ grid-template-columns: 1fr !important; } .pf-data{ grid-template-columns: repeat(2,1fr) !important; gap: var(--space-6) !important; } }`}</style>
+        </section>
+      );
+    }
+
+    function Capacidades() {
+      const { SectionLabel, Tag } = NSget();
+      const items = [
+        { n: "01", title: "IA & Agentes", desc: "Diseño de agentes, RAG y pipelines de inferencia listos para producción.", tags: ["LangChain", "OpenAI", "RAG", "Vector DB"] },
+        { n: "02", title: "Azure Cloud", desc: "Arquitectura, despliegue y observabilidad sobre Azure y contenedores.", tags: ["Azure", "Docker", "K8s", "Terraform"] },
+        { n: "03", title: "Fullstack", desc: "Producto end-to-end: APIs, datos y front con foco en rendimiento.", tags: ["React", "Node.js", "Python", "PostgreSQL"] },
+        { n: "04", title: "Redes & Seguridad", desc: "Fundamentos sólidos de red, hardening y diseño seguro por defecto.", tags: ["Linux", "VPN", "Firewall", "TLS"] },
+      ];
+      return (
+        <section className="pf-section" id="capacidades">
+          <hr className="pf-rule" />
+          <div className="pf-container" style={{ paddingTop: "var(--space-10)" }}>
+            <div className="reveal" style={{ marginBottom: "var(--space-10)" }}>
+              <SectionLabel index="03" onDark>Capacidades</SectionLabel>
+            </div>
+          </div>
+          <div className="pf-container">
+            <div className="pf-cap-grid">
+              {items.map((it, i) => (
+                <div className="pf-cap-cell reveal" data-delay={(i * 0.06).toFixed(2)} key={i} data-cursor>
+                  <div className="ds-label" style={{ color: "var(--graphite)", marginBottom: "var(--space-6)" }}>/{it.n}</div>
+                  <h3 className="pf-display-md" style={{ marginBottom: "var(--space-4)" }}>{it.title}</h3>
+                  <p style={{ color: "var(--mist)", maxWidth: "34ch", marginBottom: "var(--space-6)" }}>{it.desc}</p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
+                    {it.tags.map((t) => <Tag key={t} onDark>{t}</Tag>)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function ArrowUpRight() {
+      return (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M7 17 17 7" /><path d="M7 7h10v10" />
+        </svg>
+      );
+    }
+
+    function Proyectos() {
+      const { SectionLabel, Tag } = NSget();
+      const projects = [
+        { idx: "/01", name: "NutrisSys", url: "#", desc: "Plataforma de nutrición con motor de recomendación asistido por IA: planes, seguimiento y panel clínico.", tags: ["React", "Python", "Azure", "PostgreSQL", "OpenAI"], img: res('heroB', heroBfb) },
+        { idx: "/02", name: "Proyecto 02", url: "#", desc: "Servicio fullstack con arquitectura de contenedores y pipeline de despliegue continuo sobre la nube.", tags: ["Node.js", "Docker", "Kubernetes", "Terraform"], img: res('heroA', heroAfb) },
+      ];
+      return (
+        <section className="pf-section" id="proyectos">
+          <hr className="pf-rule" />
+          <div className="pf-container" style={{ paddingTop: "var(--space-10)" }}>
+            <div className="reveal" style={{ marginBottom: "var(--space-10)" }}>
+              <SectionLabel index="04" onDark>Proyectos</SectionLabel>
+            </div>
+            <div className="pf-proj">
+              {projects.map((p, i) => (
+                <a className="pf-proj-card reveal" data-delay={(i * 0.08).toFixed(2)} key={i} href={p.url} target="_blank" rel="noopener noreferrer">
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--space-5)" }}>
+                    <div>
+                      <div className="ds-label" style={{ color: "var(--graphite)", marginBottom: "var(--space-3)" }}>{p.idx}</div>
+                      <h3 className="pf-proj-title pf-display-lg" style={{ color: "var(--mist)", marginBottom: "var(--space-5)" }}>{p.name}</h3>
+                      <p style={{ maxWidth: "42ch", color: "var(--mist)", marginBottom: "var(--space-5)" }}>{p.desc}</p>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)", marginBottom: "var(--space-4)" }}>
+                        {p.tags.map((t) => <Tag key={t} onDark>{t}</Tag>)}
+                      </div>
+                      <span className="ds-label" style={{ color: "var(--paper)" }}>Ver en vivo →</span>
+                    </div>
+                    <span className="pf-proj-arrow" aria-hidden="true"><ArrowUpRight /></span>
+                  </div>
+                  <div className="pf-proj-media">
+                    <div className="ph">Screenshot</div>
+                    <img src={p.img} alt="" loading="lazy" />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Arsenal() {
+      const { SectionLabel } = NSget();
+      const stack = ["React", "TypeScript", "Python", "Azure", "Docker", "Kubernetes", "Node.js", "PostgreSQL", "LangChain", "OpenAI", "Terraform", "Linux", "FastAPI", "Redis", "Git", "Nginx"];
+      const Row = () => (
+        <div className="pf-track">
+          {stack.map((s, i) => (
+            <React.Fragment key={i}>
+              <span className="item">{s}</span>
+              <span className="dot">●</span>
+            </React.Fragment>
+          ))}
+        </div>
+      );
+      return (
+        <section className="pf-section" id="arsenal">
+          <hr className="pf-rule" />
+          <div className="pf-container" style={{ paddingTop: "var(--space-10)", paddingBottom: "var(--space-8)" }}>
+            <div className="reveal"><SectionLabel index="05" onDark>Arsenal</SectionLabel></div>
+          </div>
+          <div className="pf-marquee"><Row /><Row /></div>
+        </section>
+      );
+    }
+
+    function Trayectoria() {
+      const { SectionLabel } = NSget();
+      const timeline = [
+        { active: true, period: "2024 — Presente", role: "NutrisSys", note: "Arquitectura de plataforma e integración de IA. Diseño cloud, datos y front." },
+        { active: false, period: "2022 — 2024", role: "PBS", note: "Desarrollo fullstack y soporte de infraestructura. Redes, despliegue y mantenimiento." },
+      ];
+      const edu = [
+        { title: "Ingeniería en Sistemas", note: "Formación en arquitectura, redes y desarrollo de software." },
+        { title: "Azure · Certificaciones cloud", note: "Fundamentos y administración sobre Azure." },
+        { title: "IA aplicada & Agentes", note: "Especialización en LLMs, RAG y orquestación de agentes." },
+      ];
+      return (
+        <section className="pf-section" id="trayectoria">
+          <hr className="pf-rule" />
+          <div className="pf-container" style={{ paddingTop: "var(--space-10)" }}>
+            <div className="reveal" style={{ marginBottom: "var(--space-10)" }}>
+              <SectionLabel index="06" onDark>Trayectoria</SectionLabel>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "clamp(2rem, 6vw, 5rem)" }} className="pf-tray-grid">
+              <div className="pf-timeline">
+                {timeline.map((t, i) => (
+                  <div className={"pf-tl-item reveal" + (t.active ? " active" : "")} data-delay={(i * 0.08).toFixed(2)} key={i}>
+                    <div className="ds-label" style={{ color: t.active ? "var(--signal)" : "var(--graphite)", marginBottom: "var(--space-2)" }}>{t.period}</div>
+                    <h3 className="pf-display-md" style={{ marginBottom: "var(--space-3)" }}>{t.role}</h3>
+                    <p style={{ color: "var(--mist)", maxWidth: "40ch" }}>{t.note}</p>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div className="ds-label reveal" style={{ color: "var(--graphite)", marginBottom: "var(--space-6)" }}>Educación · Certificaciones</div>
+                {edu.map((e, i) => (
+                  <div className="reveal" data-delay={(i * 0.06).toFixed(2)} key={i} style={{ padding: "var(--space-5) 0", borderTop: "1px solid var(--line-dark)" }}>
+                    <h4 style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: "1.25rem", marginBottom: "var(--space-2)" }}>{e.title}</h4>
+                    <p style={{ color: "var(--mist)", fontSize: "var(--fs-body-sm)" }}>{e.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <style>{`@media (max-width: 760px){ .pf-tray-grid{ grid-template-columns: 1fr !important; } }`}</style>
+        </section>
+      );
+    }
+
+    function Referencias() {
+      const { SectionLabel } = NSget();
+      const quotes = [
+        { who: "— Referencia 01", role: "Tech Lead", text: "Texto de referencia pendiente. Resalta criterio técnico y capacidad de ejecución bajo presión." },
+        { who: "— Referencia 02", role: "Product", text: "Texto de referencia pendiente. Enfatiza colaboración y traducción de necesidad a sistema." },
+        { who: "— Referencia 03", role: "Cliente", text: "Texto de referencia pendiente. Destaca confiabilidad y resultado entregado." },
+      ];
+      return (
+        <section className="pf-section" id="referencias">
+          <hr className="pf-rule" />
+          <div className="pf-container" style={{ paddingTop: "var(--space-10)", paddingBottom: "var(--space-8)" }}>
+            <div className="reveal"><SectionLabel index="07" onDark>Referencias</SectionLabel></div>
+          </div>
+          <div className="pf-container">
+            <div className="pf-quotes">
+              {quotes.map((q, i) => (
+                <div className="pf-quote reveal" data-delay={(i * 0.07).toFixed(2)} key={i}>
+                  <p style={{ marginBottom: "var(--space-6)" }}>{q.text}</p>
+                  <div className="ds-label" style={{ color: "var(--paper)" }}>{q.who}</div>
+                  <div className="ds-label" style={{ color: "var(--graphite)", marginTop: "var(--space-1)" }}>{q.role}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Contacto() {
+      const { SectionLabel, Badge } = NSget();
+      return (
+        <section className="pf-section" id="contacto">
+          <hr className="pf-rule" />
+          <div className="pf-container" style={{ paddingTop: "var(--space-12)", paddingBottom: "var(--space-10)" }}>
+            <div className="reveal" style={{ marginBottom: "var(--space-8)" }}>
+              <SectionLabel index="08" onDark>Contacto</SectionLabel>
+            </div>
+            <h2 className="pf-display-lg reveal" data-delay="0.05" style={{ maxWidth: "16ch", marginBottom: "var(--space-10)" }}>
+              Construyamos algo que escale.
+            </h2>
+            <a className="pf-email reveal" data-delay="0.1" href="mailto:hola@johnnyrodriguez.dev">hola@johnnyrodriguez.dev</a>
+            <div className="reveal" data-delay="0.15" style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-6)", marginTop: "var(--space-10)", alignItems: "center" }}>
+              <a className="ds-label" data-cursor href="#" style={{ color: "var(--paper)" }}>LinkedIn ↗</a>
+              <a className="ds-label" data-cursor href="#" style={{ color: "var(--paper)" }}>GitHub ↗</a>
+              <span className="ds-label" style={{ color: "var(--graphite)" }}>San José · Costa Rica</span>
+              <Badge dot tone="available" onDark>Disponible para proyectos</Badge>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Footer() {
+      return (
+        <footer className="pf-footer">
+          <div className="pf-container" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "var(--space-5)" }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontWeight: 500, fontSize: "1rem", letterSpacing: "0.04em" }}>
+              <span style={{ color: "var(--mist)" }}>&lt;</span>/<span style={{ color: "var(--mist)" }}>&gt;</span>
+            </span>
+            <span className="ds-label" style={{ color: "var(--graphite)" }}>© 2026 Johnny Rodríguez — Systems Engineer</span>
+            <span className="ds-label" style={{ color: "var(--graphite)" }}>CALLSIGN · JR-AI-CR</span>
+            <a className="pf-totop ds-label" data-cursor href="#top" style={{ color: "var(--paper)" }}>↑ Volver arriba</a>
+          </div>
+        </footer>
+      );
+    }
+
+    class PFErrorBoundary extends React.Component {
+      constructor(p){ super(p); this.state = { err: false }; }
+      static getDerivedStateFromError(){ return { err: true }; }
+      componentDidCatch(){ /* swallow transient mount races */ }
+      render(){ return this.state.err ? null : this.props.children; }
+    }
+
+    function App() {
+      const { NavBar } = NSget();
+      React.useEffect(() => {
+        const id = requestAnimationFrame(() => window.PFMotion && window.PFMotion.setup(document));
+        return () => cancelAnimationFrame(id);
+      }, []);
+      return (
+        <div className="pf-wrap">
+          <NavBar links={["Sobre", "Capacidades", "Proyectos", "Trayectoria", "Contacto"]} cta="Hablemos" onDark />
+          <main>
+            <Hero /><Manifiesto /><Sobre /><Capacidades /><Proyectos /><Arsenal /><Trayectoria /><Referencias /><Contacto />
+          </main>
+          <Footer />
+        </div>
+      );
+    }
+
+    // Idempotent mount. Wait until the ENTIRE design-system namespace is ready
+    // (the offline bundler loads the bundle as an async blob), then mount once.
+    function pfReady() {
+      const NS = window.JohnnyRodrGuezPortfolioDesignSystem_c8b5ed;
+      return !!(NS && NS.NavBar && NS.Button && NS.Badge && NS.Tag && NS.SectionLabel
+        && typeof ReactDOM !== "undefined" && document.getElementById("root"));
+    }
+    function pfMount() {
+      if (window.__pfMounted) return true;
+      if (!pfReady()) return false;
+      window.__pfMounted = true;
+      ReactDOM.createRoot(document.getElementById("root")).render(
+        <PFErrorBoundary><App /></PFErrorBoundary>
+      );
+      return true;
+    }
+    if (!pfMount()) {
+      let tries = 0;
+      const iv = setInterval(() => {
+        if (pfMount() || ++tries > 120) clearInterval(iv);
+      }, 50);
+    }
+    } // end run-once guard
+  </script>
+
+
+</body></html>
