@@ -428,7 +428,7 @@ img { display: block; max-width: 100%; }
 @keyframes marquee { to { transform: translateX(-100%); } }
 .pf-marquee .item { font-family: var(--font-display); font-weight: var(--fw-medium); font-size: clamp(1.5rem, 3.4vw, 2.6rem); color: var(--mist); white-space: nowrap; transition: color .4s; }
 .pf-marquee .item:hover { color: var(--paper); }
-.pf-marquee .dot { color: var(--signal); font-size: 1rem; }
+.pf-marquee .sep { color: var(--line-dark); font-size: 1.25rem; font-weight: 300; letter-spacing: 0; }
 
 /* ============================================================
    TRAYECTORIA timeline
@@ -445,8 +445,9 @@ img { display: block; max-width: 100%; }
 /* ============================================================
    REFERENCIAS
    ============================================================ */
-.pf-quotes { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-dark); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
-.pf-quote { background: var(--void); padding: clamp(1.5rem, 3vw, 2.5rem); }
+.pf-quotes { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; background: var(--line-dark); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); align-items: stretch; }
+.pf-quote { background: var(--void); padding: clamp(1.5rem, 3vw, 2.5rem); display: flex; flex-direction: column; min-height: 18rem; width: 100%; box-sizing: border-box; }
+.pf-quote h3 { font-size: clamp(1.1rem, 1.8vw, 1.5rem); line-height: 1.15; word-break: break-word; }
 .pf-quote p { font-size: 0.9375rem; line-height: 1.6; color: var(--mist); }
 
 /* ============================================================
@@ -482,7 +483,7 @@ img { display: block; max-width: 100%; }
   .pf-cap-grid { grid-template-columns: 1fr 1fr; }
   .pf-cap-cell { border-right: none; }
   .pf-cap-grid > .pf-cap-cell:nth-child(2n) { border-right: 1px solid var(--line-dark); }
-  .pf-quotes { grid-template-columns: repeat(3, 1fr); }
+  .pf-quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* ============================================================
