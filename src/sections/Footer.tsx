@@ -12,7 +12,7 @@ export function Footer() {
           CALLSIGN · JR-AI-CR
         </span>
         <a className="pf-totop ds-label" data-cursor href="#top">
-          ↑ Volver arriba
+          ↑ Back to top
         </a>
       </div>
     </footer>

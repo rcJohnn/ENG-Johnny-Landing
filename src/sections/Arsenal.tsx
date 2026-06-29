@@ -2,8 +2,9 @@ import { Reveal } from '../components/Reveal'
 import { SectionLabel } from '../components/SectionLabel'
 
 const STACK = [
-  'React', 'TypeScript', 'Python', 'C#', '.NET Core', 'Azure', 'Docker', 'Kubernetes',
-  'SSMS', 'LangChain', 'OpenAI', 'Claude', 'Linux', 'FastAPI', 'Git',
+  'React', 'TypeScript', 'C#', '.NET Core', 'Azure', 'Vercel', 'Cloudflare',
+  'GitHub Actions', 'Claude Code', 'Gentle AI', 'Higgsfield AI', 'GitHub Copilot',
+  'Cisco Meraki', 'Resend', 'SQL Server', 'Git',
 ]
 
 function Row() {
@@ -12,7 +13,7 @@ function Row() {
       {STACK.map((s, i) => (
         <span key={i} style={{ display: 'contents' }}>
           <span className="item">{s}</span>
-          <span className="dot">●</span>
+          <span className="sep">/</span>
         </span>
       ))}
     </div>

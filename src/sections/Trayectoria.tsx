@@ -2,25 +2,26 @@ import { Reveal } from '../components/Reveal'
 import { SectionLabel } from '../components/SectionLabel'
 
 const TIMELINE = [
-  { active: true, period: '2024 — Presente', role: 'NutrisSys', note: 'Arquitectura de plataforma e integración de IA. Diseño cloud, datos y front.' },
-  { active: false, period: '2022 — 2024', role: 'PBS', note: 'Desarrollo fullstack y soporte de infraestructura. Redes, despliegue y mantenimiento.' },
+  { active: true, period: 'Feb 2026 — Present', role: 'NutriSys', note: 'Technical Lead & Product Owner. System architecture, generative AI supervision, Azure environment management and end-to-end CI/CD pipeline.' },
+  { active: false, period: 'May 2025 — Jan 2026', role: 'PBS', note: 'Network Technician. Installation and configuration of Cisco Meraki MX250/MX95 infrastructure, 2FA implementation and corporate identity management.' },
 ]
 
 const EDU = [
-  { title: 'Ingeniería en Sistemas', note: 'Formación en arquitectura, redes y desarrollo de software.' },
-  { title: 'Azure · Certificaciones cloud', note: 'Fundamentos y administración sobre Azure.' },
-  { title: 'IA aplicada & Agentes', note: 'Especialización en LLMs, RAG y orquestación de agentes.' },
+  { title: 'Systems Engineering', note: 'Universidad Americana — San José, Costa Rica.' },
+  { title: 'CompTIA Security+', note: 'Cybersecurity certification — TECNASA.' },
+  { title: 'Cisco CCNA 1 & 2', note: 'Routing & Switching — Universidad Castro Carazo.' },
+  { title: 'AZ-900 Azure Fundamentals', note: 'Microsoft Azure — In progress.' },
 ]
 
 export function Trayectoria() {
   return (
-    <section className="pf-section" id="trayectoria">
+    <section className="pf-section" id="experience">
       <hr className="pf-rule" />
       <div className="pf-container" style={{ paddingTop: 'var(--space-10)' }}>
         <Reveal>
           <div style={{ marginBottom: 'var(--space-10)' }}>
             <SectionLabel index="06" onDark>
-              Trayectoria
+              Experience
             </SectionLabel>
           </div>
         </Reveal>
@@ -43,7 +44,7 @@ export function Trayectoria() {
           <div>
             <Reveal>
               <div className="ds-label" style={{ color: 'var(--mist)', marginBottom: 'var(--space-6)' }}>
-                Educación · Certificaciones
+                Education · Certifications
               </div>
             </Reveal>
             {EDU.map((e, i) => (

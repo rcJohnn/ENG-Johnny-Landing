@@ -15,7 +15,7 @@ export default function App() {
   return (
     <div className="pf-wrap">
       <Cursor />
-      <NavBar links={['Sobre', 'Capacidades', 'Proyectos', 'Trayectoria', 'Contacto']} cta="Hablemos" onDark />
+      <NavBar links={['About', 'Capabilities', 'Projects', 'Experience', 'Contact']} cta="Let's talk" onDark />
       <main>
         <Hero />
         <Manifiesto />

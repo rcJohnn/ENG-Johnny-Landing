@@ -4,8 +4,8 @@ import { Button } from '../components/Button'
 import { HeroScene } from '../components/HeroScene'
 
 const LINES: { words: string[]; dim: boolean }[] = [
-  { words: ['Arquitecturas', 'que', 'escalan.'], dim: false },
-  { words: ['Agentes', 'que', 'ejecutan.'], dim: true },
+  { words: ['Architectures', 'that', 'scale.'], dim: false },
+  { words: ['Agents', 'that', 'execute.'], dim: true },
 ]
 
 function Headline() {
@@ -92,15 +92,22 @@ export function Hero() {
               opacity: 0.92,
             }}
           >
-            Ingeniero de sistemas. Diseño arquitecturas en la nube y agentes de IA que sostienen
-            producto real — de la red al modelo.
+            Systems engineer. I design cloud architectures and AI agents that hold up real
+            products — from the network to the model.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', marginTop: 'var(--space-8)' }}>
-            <Button variant="signal" size="lg" icon="arrow" href="#proyectos">
-              Ver proyectos
+            <Button variant="signal" size="lg" icon="arrow" href="#projects">
+              View projects
             </Button>
-            <Button variant="secondary" size="lg" icon="download" href="#" magnetic={false}>
-              Descargar CV
+            <Button
+              variant="secondary"
+              size="lg"
+              icon="download"
+              href="/Johnny_Rodriguez_CV.pdf"
+              download="Johnny_Rodriguez_CV.pdf"
+              magnetic={false}
+            >
+              Download CV
             </Button>
           </div>
         </div>

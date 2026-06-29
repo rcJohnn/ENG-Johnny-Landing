@@ -2,9 +2,14 @@ import { useState } from 'react'
 import { Badge } from './Badge'
 import { Button } from './Button'
 
+const MAILTO =
+  'mailto:eng.johnnrc@gmail.com' +
+  '?subject=Project%20from%20your%20portfolio' +
+  '&body=Hi%20Johnny%2C%0A%0AName%3A%20%0ACompany%20%2F%20Project%3A%20%0AInterest%3A%20%0A%0AThanks'
+
 /**
- * NavBar — header sticky con blur, links mono, badge + CTA en desktop,
- * y menú burger desplegable en mobile (<860px).
+ * NavBar — sticky header with blur, mono links, badge + CTA on desktop,
+ * and a burger dropdown menu on mobile (<860px).
  */
 interface NavBarProps {
   links?: string[]
@@ -13,8 +18,8 @@ interface NavBarProps {
 }
 
 export function NavBar({
-  links = ['Sobre', 'Capacidades', 'Proyectos', 'Trayectoria', 'Contacto'],
-  cta = 'Hablemos',
+  links = ['About', 'Capabilities', 'Projects', 'Experience', 'Contact'],
+  cta = "Let's talk",
   onDark = true,
 }: NavBarProps) {
   const [open, setOpen] = useState(false)
@@ -22,7 +27,7 @@ export function NavBar({
   return (
     <header className="ds-nav">
       <nav className="ds-nav__inner">
-        <a href="#top" className="ds-nav__logo" aria-label="Inicio">
+        <a href="#top" className="ds-nav__logo" aria-label="Home">
           <img
             src={onDark ? '/images/logo-mark-light.webp' : '/images/logo-mark-dark.webp'}
             alt="Johnny Rodríguez"
@@ -44,16 +49,16 @@ export function NavBar({
 
         <div className="ds-nav__right">
           <Badge dot tone="available" onDark={onDark}>
-            Disponible
+            Available
           </Badge>
-          <Button variant={onDark ? 'secondary' : 'primary'} size="sm" icon="arrow">
+          <Button variant={onDark ? 'secondary' : 'primary'} size="sm" icon="arrow" href={MAILTO}>
             {cta}
           </Button>
         </div>
 
         <button
           className={`ds-nav__burger${open ? ' is-open' : ''}`}
-          aria-label="Menú"
+          aria-label="Menu"
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
         >
@@ -74,7 +79,7 @@ export function NavBar({
           ))}
           <li style={{ marginTop: 'var(--space-2)' }}>
             <Badge dot tone="available" onDark={onDark}>
-              Disponible
+              Available
             </Badge>
           </li>
         </ul>

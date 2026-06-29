@@ -3,21 +3,21 @@ import { SectionLabel } from '../components/SectionLabel'
 import { Counter } from '../components/Counter'
 
 const DATA: { n: number | null; label: string; sig: boolean; text?: string }[] = [
-  { n: 4, label: 'Dominios', sig: false },
-  { n: 3, label: 'Certificaciones', sig: true },
-  { n: 2, label: 'Capas — red & modelo', sig: false },
-  { n: null, label: 'Costa Rica', sig: false, text: 'CR' },
+  { n: 2, label: 'Projects in production', sig: true },
+  { n: 3, label: 'Certifications', sig: false },
+  { n: 4, label: 'Areas of expertise', sig: false },
+  { n: null, label: 'Working method', sig: false, text: 'SDD' },
 ]
 
 export function Sobre() {
   return (
-    <section className="pf-section" id="sobre">
+    <section className="pf-section" id="about">
       <hr className="pf-rule" />
       <div className="pf-container" style={{ paddingTop: 'var(--space-10)' }}>
         <Reveal>
           <div style={{ marginBottom: 'var(--space-10)' }}>
             <SectionLabel index="02" onDark>
-              Sobre
+              About
             </SectionLabel>
           </div>
         </Reveal>
@@ -51,15 +51,15 @@ export function Sobre() {
                   marginBottom: 'var(--space-5)',
                 }}
               >
-                Ingeniero de sistemas enfocado en IA aplicada, Azure Cloud y desarrollo fullstack.
-                Construyo desde la infraestructura — redes, seguridad, despliegue — hasta los agentes
-                y modelos que corren encima.
+                Systems engineer focused on applied AI, Azure Cloud and fullstack development.
+                I build from the infrastructure up — networking, security, deployment — to the agents
+                and models that run on top of it.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
               <p style={{ maxWidth: 'var(--maxw-prose)', color: 'var(--mist)', marginBottom: 'var(--space-10)' }}>
-                Trabajo con criterio de producto: que lo que se entrega resista carga, falle con gracia
-                y se pueda mantener sin heroísmos.
+                I work with a product mindset: what ships should hold up under load, fail gracefully
+                and stay maintainable without heroics.
               </p>
             </Reveal>
 

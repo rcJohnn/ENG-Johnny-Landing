@@ -1,34 +1,46 @@
 import { Reveal } from '../components/Reveal'
 import { SectionLabel } from '../components/SectionLabel'
 
-const QUOTES = [
-  { who: '— Referencia 01', role: 'Tech Lead', text: 'Texto de referencia pendiente. Resalta criterio técnico y capacidad de ejecución bajo presión.' },
-  { who: '— Referencia 02', role: 'Product', text: 'Texto de referencia pendiente. Enfatiza colaboración y traducción de necesidad a sistema.' },
-  { who: '— Referencia 03', role: 'Cliente', text: 'Texto de referencia pendiente. Destaca confiabilidad y resultado entregado.' },
+const STEPS = [
+  {
+    n: '01',
+    title: 'Specification',
+    text: 'Before writing code: requirements, architecture and scope defined with Spec-Driven Development (SDD). The system exists on paper before it exists in production.',
+  },
+  {
+    n: '02',
+    title: 'AI session',
+    text: 'Agentic sessions with Gentle AI and persistent memory (Engram). Active supervision of every generated output — I direct, the AI executes. Technical review before moving forward.',
+  },
+  {
+    n: '03',
+    title: 'Real production',
+    text: 'Deploy to Azure or Vercel, CI/CD with GitHub Actions, secure secrets, domain, email and cost monitoring. Nothing ships until it works under load and fails gracefully.',
+  },
 ]
 
 export function Referencias() {
   return (
-    <section className="pf-section" id="referencias">
+    <section className="pf-section" id="process">
       <hr className="pf-rule" />
       <div className="pf-container" style={{ paddingTop: 'var(--space-10)', paddingBottom: 'var(--space-8)' }}>
         <Reveal>
           <SectionLabel index="07" onDark>
-            Referencias
+            Process
           </SectionLabel>
         </Reveal>
       </div>
       <div className="pf-container">
         <div className="pf-quotes">
-          {QUOTES.map((q, i) => (
+          {STEPS.map((s, i) => (
             <Reveal key={i} delay={i * 0.07} className="pf-quote">
-              <p style={{ marginBottom: 'var(--space-6)' }}>{q.text}</p>
-              <div className="ds-label" style={{ color: 'var(--paper)' }}>
-                {q.who}
+              <div className="ds-label" style={{ color: 'var(--signal)', marginBottom: 'var(--space-4)' }}>
+                /{s.n}
               </div>
-              <div className="ds-label" style={{ color: 'var(--mist)', marginTop: 'var(--space-1)' }}>
-                {q.role}
-              </div>
+              <h3 className="pf-display-md" style={{ marginBottom: 'var(--space-4)' }}>
+                {s.title}
+              </h3>
+              <p>{s.text}</p>
             </Reveal>
           ))}
         </div>

@@ -8,33 +8,33 @@ const PROJECTS = [
     idx: '/01',
     name: 'NutrisSys',
     url: 'https://www.nutrissys.com',
-    desc: 'Sistema de gestión de consultas para nutricionistas: agenda, pacientes, planes asistidos por IA y cobro — todo en un flujo.',
+    desc: 'Practice management system for nutritionists: scheduling, patients, AI-assisted plans and billing — all in one flow.',
     tags: ['React', 'TypeScript', 'C#', '.NET Core', 'Azure', 'SQL Server'],
     img: '/images/proj-nutrissys.webp',
     imgAvif: '/images/proj-nutrissys.avif',
-    alt: 'Captura del hero de NutrisSys, sistema de gestión de consultas con el mensaje "Tu consulta, en flujo"',
+    alt: 'Hero screenshot of NutrisSys, a practice management system, with the message "Your practice, in flow"',
   },
   {
     idx: '/02',
     name: 'Nutricionista Pamela Alvarado',
     url: 'https://www.nutricionistapamelaalvarado.com',
-    desc: 'Landing profesional para nutrición clínica y deportiva: enfoque, servicios y agenda de consultas online y presenciales en Costa Rica.',
+    desc: 'Professional landing page for clinical and sports nutrition: approach, services and online and in-person consultation booking in Costa Rica.',
     tags: ['React', 'Vite', 'Motion'],
     img: '/images/proj-pamela-alvarado.webp',
     imgAvif: '/images/proj-pamela-alvarado.avif',
-    alt: 'Captura del hero de la landing de Pamela Alvarado, nutricionista clínica y deportiva, con el mensaje "Salud real, sin perfección"',
+    alt: 'Hero screenshot of Pamela Alvarado\'s landing page, clinical and sports nutritionist, with the message "Real health, no perfection"',
   },
 ]
 
 export function Proyectos() {
   return (
-    <section className="pf-section" id="proyectos">
+    <section className="pf-section" id="projects">
       <hr className="pf-rule" />
       <div className="pf-container" style={{ paddingTop: 'var(--space-10)' }}>
         <Reveal>
           <div style={{ marginBottom: 'var(--space-10)' }}>
             <SectionLabel index="04" onDark>
-              Proyectos
+              Projects
             </SectionLabel>
           </div>
         </Reveal>
@@ -59,7 +59,7 @@ export function Proyectos() {
                       ))}
                     </div>
                     <span className="ds-label" style={{ color: 'var(--paper)' }}>
-                      Ver en vivo →
+                      View live →
                     </span>
                   </div>
                   <span className="pf-proj-arrow" aria-hidden="true">

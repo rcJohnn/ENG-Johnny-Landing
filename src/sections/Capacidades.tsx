@@ -6,21 +6,21 @@ import { Tag } from '../components/Tag'
 import { fadeUp } from '../motion.presets'
 
 const ITEMS = [
-  { n: '01', title: 'IA & Agentes', desc: 'Diseño de agentes, RAG y pipelines de inferencia listos para producción.', tags: ['LangChain', 'OpenAI', 'RAG', 'Vector DB'] },
-  { n: '02', title: 'Azure Cloud', desc: 'Arquitectura, despliegue y observabilidad sobre Azure y contenedores.', tags: ['Azure', 'Docker', 'K8s', 'Terraform'] },
-  { n: '03', title: 'Fullstack', desc: 'Producto end-to-end: APIs, datos y front con foco en rendimiento.', tags: ['React', 'Node.js', 'Python', 'PostgreSQL'] },
-  { n: '04', title: 'Redes & Seguridad', desc: 'Fundamentos sólidos de red, hardening y diseño seguro por defecto.', tags: ['Linux', 'VPN', 'Firewall', 'TLS'] },
+  { n: '01', title: 'AI & Agent Development', desc: 'Agent-assisted AI development using Spec-Driven Development (SDD) and the Gentle AI ecosystem with persistent memory.', tags: ['Claude Code', 'Gentle AI', 'SDD', 'Higgsfield AI'] },
+  { n: '02', title: 'Cloud & Deployment', desc: 'Provisioning, configuring and monitoring Azure and Vercel environments. CI/CD, secrets and cost management in production.', tags: ['Azure', 'Vercel', 'GitHub Actions', 'App Service'] },
+  { n: '03', title: 'Infrastructure & Email', desc: 'DNS on Cloudflare and Namecheap, custom email with full inbound/outbound coverage from owned domains.', tags: ['Cloudflare', 'Resend', 'ImprovMX', 'Gmail SMTP'] },
+  { n: '04', title: 'Networking & Security', desc: 'Installation and configuration of enterprise network infrastructure. 2FA, corporate identity and topology design.', tags: ['Cisco Meraki', 'CompTIA Security+', 'CCNA', '2FA'] },
 ]
 
 export function Capacidades() {
   return (
-    <section className="pf-section" id="capacidades">
+    <section className="pf-section" id="capabilities">
       <hr className="pf-rule" />
       <div className="pf-container" style={{ paddingTop: 'var(--space-10)' }}>
         <Reveal>
           <div style={{ marginBottom: 'var(--space-10)' }}>
             <SectionLabel index="03" onDark>
-              Capacidades
+              Capabilities
             </SectionLabel>
           </div>
         </Reveal>
