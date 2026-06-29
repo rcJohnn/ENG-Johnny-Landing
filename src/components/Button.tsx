@@ -2,10 +2,10 @@ import { useCallback, useRef, useState } from 'react'
 import { ButtonIcon, type IconName } from './icons'
 
 /**
- * Button — el elemento de acción primario de la marca.
- * Dos comportamientos firma: un pull MAGNÉTICO sutil hacia el cursor,
- * y un panel SLIDE-FILL que entra desde -101% en hover.
- * Monocromático por defecto; la variante `signal` usa el acento azure.
+ * Button — the brand's primary action element.
+ * Two signature behaviors: a subtle MAGNETIC pull toward the cursor,
+ * and a SLIDE-FILL panel that enters from -101% on hover.
+ * Monochrome by default; the `signal` variant uses the azure accent.
  */
 
 type Variant = 'primary' | 'secondary' | 'ghost' | 'signal'
@@ -18,6 +18,9 @@ interface ButtonProps {
   icon?: IconName | null
   magnetic?: boolean
   href?: string
+  target?: string
+  rel?: string
+  download?: boolean | string
   onClick?: () => void
 }
 
@@ -36,6 +39,9 @@ export function Button({
   icon = null,
   magnetic = true,
   href,
+  target,
+  rel,
+  download,
   onClick,
 }: ButtonProps) {
   const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null)
@@ -61,6 +67,9 @@ export function Button({
     <Tag
       ref={ref}
       href={href}
+      target={href ? target : undefined}
+      rel={href ? rel : undefined}
+      download={href ? download : undefined}
       onClick={onClick}
       onMouseMove={onMove}
       onMouseLeave={reset}

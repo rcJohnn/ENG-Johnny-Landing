@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Johnny Rodríguez — Systems Engineer · CV</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --ink: #0b0b0d;
+        --mist: #6c6c72;
+        --line: #e3e2dd;
+        --paper: #ffffff;
+        --signal: #2f6bff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        background: #d9d8d3;
+        color: var(--ink);
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 10.2px;
+        line-height: 1.36;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 16px auto;
+        padding: 12mm 15mm 10mm;
+        background: var(--paper);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+      }
+
+      /* ---- Typography helpers ---- */
+      .mono {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 7.6px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--mist);
+      }
+
+      h1 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        font-size: 27px;
+        letter-spacing: -0.01em;
+        line-height: 1;
+      }
+
+      .role {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 500;
+        font-size: 11.5px;
+        color: var(--signal);
+        margin-top: 4px;
+      }
+
+      h2 {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8.4px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--signal);
+        padding-bottom: 4px;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 8px;
+      }
+
+      h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 600;
+        font-size: 11px;
+      }
+
+      /* ---- Header ---- */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 16px;
+        padding-bottom: 9px;
+        border-bottom: 2px solid var(--ink);
+        margin-bottom: 11px;
+      }
+
+      .head-right {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .qr {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+      .qr img {
+        display: block;
+        width: 62px;
+        height: 62px;
+      }
+      .qr .mono {
+        font-size: 6.4px;
+        letter-spacing: 0.1em;
+        color: var(--signal);
+      }
+
+      .contact {
+        text-align: right;
+        line-height: 1.7;
+      }
+      .contact a {
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .contact .sig {
+        color: var(--signal);
+        font-weight: 500;
+      }
+
+      /* ---- Sections ---- */
+      section {
+        margin-bottom: 9px;
+      }
+
+      .lede {
+        max-width: 64ch;
+        color: #2a2a2e;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 22px;
+      }
+
+      .block .t {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 600;
+        font-size: 10.4px;
+        margin-bottom: 2px;
+      }
+      .block p {
+        color: #3a3a3f;
+      }
+
+      .entry {
+        margin-bottom: 7px;
+      }
+      .entry:last-child {
+        margin-bottom: 0;
+      }
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .entry-head .where {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+        letter-spacing: 0.06em;
+        color: var(--mist);
+        white-space: nowrap;
+      }
+      .entry h3 .at {
+        color: var(--mist);
+        font-weight: 500;
+      }
+      .url {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+        color: var(--signal);
+        margin-left: 6px;
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+        margin-top: 4px;
+      }
+      ul li {
+        position: relative;
+        padding-left: 12px;
+        margin-bottom: 2.5px;
+        color: #34343a;
+      }
+      ul li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 5.5px;
+        width: 4px;
+        height: 4px;
+        background: var(--signal);
+      }
+
+      .stack-row {
+        display: grid;
+        grid-template-columns: 118px 1fr;
+        gap: 8px;
+        padding: 3px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .stack-row:last-child {
+        border-bottom: 0;
+      }
+      .stack-row .k {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+        letter-spacing: 0.04em;
+        color: var(--mist);
+        text-transform: uppercase;
+        padding-top: 1px;
+      }
+      .stack-row .v {
+        color: #34343a;
+      }
+
+      .edu-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 2px 0;
+      }
+      .edu-row .n {
+        color: var(--mist);
+      }
+
+      /* ---- Print ---- */
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      @media print {
+        html,
+        body {
+          background: #fff;
+        }
+        .page {
+          margin: 0;
+          box-shadow: none;
+          width: auto;
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div>
+          <div class="mono">Cartago · Costa Rica — Systems Engineer / AI · Cloud</div>
+          <h1>JOHNNY RODRÍGUEZ</h1>
+          <div class="role">Systems Engineer · AI Builder &amp; Cloud Operations Specialist</div>
+        </div>
+        <div class="head-right">
+          <div class="contact mono">
+            <div><a class="sig" href="mailto:eng.johnnrc@gmail.com">eng.johnnrc@gmail.com</a></div>
+            <div><a href="https://www.nutrissys.com">nutrissys.com</a></div>
+            <div><a href="https://github.com/rcJohnn">github.com/rcJohnn</a></div>
+            <div><a href="https://www.linkedin.com/in/johnny-rodríguez-campos-2944292a5/">linkedin.com/in/johnny-rodríguez</a></div>
+          </div>
+          <a class="qr" href="https://eng-johnny-landing.vercel.app" aria-label="Scan to open live portfolio">
+            <img src="qr-portfolio.svg" alt="QR code linking to johnny rodríguez portfolio" width="62" height="62" />
+            <span class="mono">Scan → portfolio</span>
+          </a>
+        </div>
+      </header>
+
+      <section>
+        <p class="lede">
+          Systems Engineer who builds and operates real software products by combining cloud
+          infrastructure with modern AI orchestration. I deploy and maintain full-stack applications
+          on Azure and Vercel, manage production environments end-to-end (DNS, email routing, secrets,
+          cost monitoring, CI/CD), and direct AI-assisted development through a spec-driven agentic
+          ecosystem. Focused on shipping working systems to production — not just writing code.
+        </p>
+      </section>
+
+      <section>
+        <h2>Areas of Expertise</h2>
+        <div class="grid-2">
+          <div class="block">
+            <div class="t">Cloud Operations (Azure)</div>
+            <p>App Service (Linux) provisioning, Azure SQL, custom domain &amp; SSL binding, environment variables, and Azure Cost Management for production monitoring and anomaly detection.</p>
+          </div>
+          <div class="block">
+            <div class="t">AI-Driven Development</div>
+            <p>Spec-Driven Development (SDD) with the Gentle AI ecosystem and persistent memory (Engram). Custom skill authoring, AI session supervision and production debugging.</p>
+          </div>
+          <div class="block">
+            <div class="t">Infrastructure &amp; Email</div>
+            <p>DNS (Cloudflare, Namecheap) and custom-domain email — Gmail SMTP relay, Resend (transactional), ImprovMX (inbound): full inbound/outbound coverage.</p>
+          </div>
+          <div class="block">
+            <div class="t">Deployment &amp; CI/CD</div>
+            <p>Git version control, GitHub Actions for deploy-pipeline verification, Vercel deployments, and GitHub Secrets for production secrets management.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <div class="entry">
+          <div class="entry-head">
+            <h3>NutriSys — Nutrition Management SaaS<a class="url" href="https://www.nutrissys.com">nutrissys.com</a></h3>
+          </div>
+          <ul>
+            <li>Full-stack SaaS for nutrition professionals: .NET Core API, React/TypeScript frontend, mobile app, Azure SQL database.</li>
+            <li>Hosted on Azure App Service (Linux) with custom domain, SSL, GitHub Secrets and managed environment configuration.</li>
+            <li>Built through agentic AI sessions (Gentle AI / SDD): orchestrated multi-agent workflows with persistent memory, architected modules, defined requirements and supervised all output.</li>
+            <li>Detected a runaway database process the same day via Azure Cost Management anomaly monitoring — resolved with zero data loss.</li>
+          </ul>
+        </div>
+        <div class="entry">
+          <div class="entry-head">
+            <h3>Premium Landing — Pamela Alvarado, Nutritionist<a class="url" href="https://www.nutricionistapamelaalvarado.com">nutricionistapamelaalvarado.com</a></h3>
+          </div>
+          <ul>
+            <li>High-conversion landing page built with a custom Claude skill + Higgsfield AI visual pipeline.</li>
+            <li>Full production setup: DNS on Cloudflare + Namecheap, custom-domain email (Resend + ImprovMX), deployed to Vercel — concept to live URL in a single session.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Work Experience</h2>
+        <div class="entry">
+          <div class="entry-head">
+            <h3>Technical Lead &amp; Product Owner <span class="at">— NutriSys</span></h3>
+            <span class="where">Feb 2026 – Present</span>
+          </div>
+          <ul>
+            <li>Defined system architecture across API, BLL and DAL layers; supervised AI-generated code quality and adherence to best practices.</li>
+            <li>Managed the full Azure environment (App Service, SQL, custom domain, SSL); cut anomalous daily spend ~30% via proactive Cost Management.</li>
+            <li>Owned the CI/CD pipeline: GitHub Actions monitoring, Vercel deploy verification, production secrets via GitHub Secrets.</li>
+            <li>Authored custom AI skill files to enforce coding standards and architectural patterns across all agentic sessions.</li>
+          </ul>
+        </div>
+        <div class="entry">
+          <div class="entry-head">
+            <h3>Network Technician <span class="at">— PBS</span></h3>
+            <span class="where">May 2025 – Jan 2026</span>
+          </div>
+          <ul>
+            <li>Installed and configured enterprise network infrastructure on Cisco Meraki MX250 / MX95 equipment.</li>
+            <li>Designed role-based segmentation across multiple SSIDs with per-role bandwidth tiers and authenticated access (2FA / identity management).</li>
+            <li>Configured firewall rules and VLANs to enforce an education-only network; handled cabling, topology design and optimization.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Education &amp; Certifications</h2>
+        <div class="edu-row"><span><strong>B.Sc. Systems Engineering</strong></span><span class="n">Universidad Americana — San José, CR</span></div>
+        <div class="edu-row"><span><strong>CompTIA Security+</strong> — Cybersecurity Certification</span><span class="n">TECNASA</span></div>
+        <div class="edu-row"><span><strong>Cisco CCNA 1 &amp; 2</strong> — Routing &amp; Switching</span><span class="n">Universidad Castro Carazo</span></div>
+        <div class="edu-row"><span><strong>AZ-900 Azure Fundamentals</strong></span><span class="n">Microsoft — In progress</span></div>
+      </section>
+
+      <section>
+        <h2>Technical Stack</h2>
+        <div class="stack-row"><span class="k">Cloud / Hosting</span><span class="v">Microsoft Azure (App Service, SQL, Cost Management), Vercel</span></div>
+        <div class="stack-row"><span class="k">Infra / DNS</span><span class="v">Cloudflare, Namecheap, Resend API, ImprovMX, Gmail SMTP relay</span></div>
+        <div class="stack-row"><span class="k">AI Development</span><span class="v">Gentle AI (Engram + SDD), Claude Code, Higgsfield AI, GitHub Copilot</span></div>
+        <div class="stack-row"><span class="k">DevOps / VCS</span><span class="v">Git, GitHub Actions, GitHub Secrets</span></div>
+        <div class="stack-row"><span class="k">Network / Security</span><span class="v">Cisco Meraki (MX250/MX95), VLANs, role-based SSID segmentation, firewall rules, 2FA, CompTIA Security+, CCNA R&amp;S</span></div>
+      </section>
+    </div>
+  </body>
+</html>
