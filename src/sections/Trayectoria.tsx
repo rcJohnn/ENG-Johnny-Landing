@@ -2,7 +2,7 @@ import { Reveal } from '../components/Reveal'
 import { SectionLabel } from '../components/SectionLabel'
 
 const TIMELINE = [
-  { active: true, period: 'Feb 2026 — Present', role: 'NutriSys', note: 'Technical Lead & Product Owner. System architecture, generative AI supervision, Azure environment management and end-to-end CI/CD pipeline.' },
+  { active: true, period: 'Feb 2026 — Present', role: 'NutriSys', note: 'Technical Lead & Product Owner. System architecture, generative AI supervision, Azure environment management and end-to-end CI/CD pipeline. Led the development and Google Play release of the NutrisSys Android app.' },
   { active: false, period: 'May 2025 — Jan 2026', role: 'PBS', note: 'Network Technician. Installation and configuration of Cisco Meraki MX250/MX95 infrastructure, 2FA implementation and corporate identity management.' },
 ]
 

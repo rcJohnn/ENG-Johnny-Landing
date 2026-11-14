@@ -29,7 +29,7 @@ export function Contacto() {
             <a
               className="ds-label pf-contact-link"
               data-cursor
-              href="https://www.linkedin.com/in/johnny-rodríguez-campos-2944292a5/"
+              href="https://www.linkedin.com/in/engineer-johnny-rodriguez-campos/"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: 'var(--paper)' }}

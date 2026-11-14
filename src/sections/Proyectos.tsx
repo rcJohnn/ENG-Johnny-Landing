@@ -16,6 +16,16 @@ const PROJECTS = [
   },
   {
     idx: '/02',
+    name: 'NutrisSys App',
+    url: 'https://play.google.com/store/apps/details?id=com.nutrissys.mobileapp',
+    desc: 'Android version of NutrisSys, available on Google Play: patients follow their meal plan, log food, track progress and scan product labels from their phone.',
+    tags: ['Android', 'Google Play', 'Mobile'],
+    img: '/images/proj-nutrissys-app.webp',
+    imgAvif: '/images/proj-nutrissys-app.avif',
+    alt: 'Three screens of the NutrisSys Android app: product scanner, home dashboard and meal plan',
+  },
+  {
+    idx: '/03',
     name: 'Nutricionista Pamela Alvarado',
     url: 'https://www.nutricionistapamelaalvarado.com',
     desc: 'Professional landing page for clinical and sports nutrition: approach, services and online and in-person consultation booking in Costa Rica.',
